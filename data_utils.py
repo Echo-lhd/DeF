@@ -38,33 +38,10 @@ class TrainsetLoader(Dataset):
         IR1_odd = init_frame(generate(IR1, flag=0), flag=1)
         IR2_even = init_frame(generate(IR2, flag=1), flag=0)
 
-        # # extract Y channel for LR inputs
-        # HR0 = rgb2y(HR0)
-        # HR1 = rgb2y(HR1)
-        # HR2 = rgb2y(HR2)
-        # LR0_even = rgb2y(LR0_even)
-        # LR1_odd = rgb2y(LR1_odd)
-        # LR2_even = rgb2y(LR2_even)
-        # LR0 = rgb2y(LR0)
-        # LR1 = rgb2y(LR1)
-        # LR2 = rgb2y(LR2)
 
         # crop patchs randomly
         IR0_even, IR1_odd, IR2_even, IR1 = random_crop(IR0_even, IR1_odd, IR2_even, IR1, self.patch_size, self.scale)
 
-        # HR0 = HR0[:, :, np.newaxis]
-        # HR1 = HR1[:, :, np.newaxis]
-        # HR2 = HR2[:, :, np.newaxis]
-        # LR0_even = LR0_even[:, :, np.newaxis]
-        # LR1_odd = LR1_odd[:, :, np.newaxis]
-        # LR2_even = LR2_even[:, :, np.newaxis]
-        # LR0 = LR0[:, :, np.newaxis]
-        # LR1 = LR1[:, :, np.newaxis]
-        # LR2 = LR2[:, :, np.newaxis]
-
-        # HR = np.concatenate((HR0, HR1, HR2), axis=2)
-        # LR = np.concatenate((LR0_even, LR1_odd, LR2_even), axis=2)
-        # LR_original = np.concatenate((LR0, LR1, LR2), axis=2)
 
         # data augmentation
         IR0_even, IR1_odd, IR2_even, IR1 = augmentation()(IR0_even, IR1_odd, IR2_even, IR1)
@@ -97,8 +74,6 @@ class TestsetLoader(Dataset):
         LR1 = LR1.crop([0, 0, W, H])
         LR2 = LR2.crop([0, 0, W, H])
 
-        # LR1_bicubic = LR1.resize((W * self.scale, H * self.scale), Image.BICUBIC)
-        # LR1_bicubic = np.array(LR1_bicubic, dtype=np.float32) / 255.0
 
         LR0 = np.array(LR0, dtype=np.float32) / 255.0
         LR1 = np.array(LR1, dtype=np.float32) / 255.0
@@ -112,24 +87,6 @@ class TestsetLoader(Dataset):
         IR1_odd = init_frame(generate(LR1, flag=0), flag=1)
         IR2_even = init_frame(generate(LR2, flag=1), flag=0)
 
-        # IR0_even = init_frame(generate(LR0, flag=0), flag=1)
-        # IR1_odd = init_frame(generate(LR1, flag=1), flag=0)
-        # IR2_even = init_frame(generate(LR2, flag=0), flag=1)
-
-        # extract Y channel for LR inputs
-        # LR0_y, _, _ = rgb2ycbcr(LR0)
-        # LR1_y, _, _ = rgb2ycbcr(LR1)
-        # LR2_y, _, _ = rgb2ycbcr(LR2)
-
-        # LR0_y = LR0_y[:, :, np.newaxis]
-        # LR1_y = LR1_y[:, :, np.newaxis]
-        # LR2_y = LR2_y[:, :, np.newaxis]
-        # LR = np.concatenate((LR0_y, LR1_y, LR2_y), axis=2)
-        #
-        # LR = toTensor(LR)
-
-        # generate Cr, Cb channels using bicubic interpolation
-        # _, SR_cb, SR_cr = rgb2ycbcr(LR1_bicubic)
 
         return toTensor(IR0_even), toTensor(IR1_odd), toTensor(IR2_even)
 

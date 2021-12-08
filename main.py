@@ -1,7 +1,7 @@
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from data_utils import TrainsetLoader
-from models.vsrTransformer_arch import vsrTransformer
+from models.DeF import DeF
 import torch.backends.cudnn as cudnn
 import argparse
 import torch
@@ -34,7 +34,7 @@ def parse_args():
 
 def main(cfg):
     # model
-    net = vsrTransformer()
+    net = DeF()
     if cfg.gpu_mode:
         net.cuda()
     cudnn.benchmark = True
