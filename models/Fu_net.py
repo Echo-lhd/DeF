@@ -65,6 +65,6 @@ class Fu_net(nn.Module):
 if __name__ == '__main__':
     sim_data = torch.rand(1, 64*3, 512, 512)
     h, w = sim_data.size()[-2:]
-    net = Set_net(channels=64*3)
+    net = Fu_net(channels=64*3)
     pred = net(sim_data)
     print(pred.size())
