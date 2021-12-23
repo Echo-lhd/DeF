@@ -2,9 +2,9 @@ import torch
 from torch import nn as nn
 from torch.nn import functional as F
 
-class Set_net(nn.Module):
+class Fu_net(nn.Module):
     def __init__(self, channels):
-        super(Set_net, self).__init__()
+        super(Fu_net, self).__init__()
         ##1
         self.conv11_k3_s1 = nn.Conv2d(channels, channels, 3, 1, 1)  # k3 s1
         self.conv12_k3_s1 = nn.Conv2d(channels, channels, 3, 1, 1)  # k3 s1
