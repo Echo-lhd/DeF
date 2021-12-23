@@ -22,8 +22,7 @@ Clone repository
 
 ## Training
 
-- Please refer to **[configuration of training](main.py)** for more details and [pretrained models](https://drive.google.com/drive/folders/1HFZbuYq54U9mz_ngAqfW3pRMcry7XWx3?usp=sharing).  
-
+- Please refer to main.py
     ```bash
     # Train on Vimeo-90K
     CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python main.py
