@@ -1,6 +1,6 @@
 # DeT
 
-Therefore,we propose a transformer-based method for deinterlacing. The method consists of three main modules, the Feature extractor, Deinterlacing transformer and Densnet modules. 
+We propose a transformer-based method for deinterlacing. The method consists of three main modules, the Feature extractor, Deinterlacing transformer and Densnet modules. 
 
 <p align="center"><img width="100%" src="Figs/Fig1.png" /></p>
 
